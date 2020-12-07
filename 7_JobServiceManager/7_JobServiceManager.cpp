@@ -24,18 +24,18 @@ int main()
         const char *key1 = "huy";
         unsigned char output[sizeof input];
         unsigned char output2[sizeof input];
-        des_ecb_with_str_key(input, sizeof input, key, output, 1);
-        des_ecb_with_str_key(output, sizeof input, key1, output2, 0);
+        des_ecb_with_str_key(input, key, output, 1);
+        des_ecb_with_str_key(output, key1, output2, 0);
         print_data("Encrypted", output, sizeof input);
         print_data("Decrypted", output2, sizeof input);
 
         memset(output, 0, sizeof input);
         memset(output2, 0, sizeof input);
         unsigned long long my_key = des_random_key();
-        des_ecb(input, sizeof input, my_key, output, 1);
+        des_ecb(input, my_key, output, 1);
         my_key -= 1;
         ++my_key;
-        des_ecb(output, sizeof input, my_key, output2, 0);
+        des_ecb(output, my_key, output2, 0);
         //des_ecb(input, sizeof input, my_key, output, 1);
         //des_ecb(output, sizeof input, my_key, output2, 0);
         print_data("Encrypted", output, sizeof input);
