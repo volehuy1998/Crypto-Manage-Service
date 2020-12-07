@@ -142,12 +142,12 @@
     <ClCompile Include="7_JobServiceManager.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\NativeDesLibrary\NativeDesDLL\NativeDesDLL.vcxproj">
-      <Project>{9a1b94a4-f47d-435e-84cf-48210307cfdc}</Project>
-    </ProjectReference>
+    <ClInclude Include="..\..\NativeDesLibrary\NativeDesDLL\NativeDes.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\NativeDesLibrary\NativeDesDLL\NativeDes.h" />
+    <ProjectReference Include="..\Native-Des-Lib\NativeDesDLL\NativeDesDLL.vcxproj">
+      <Project>{9a1b94a4-f47d-435e-84cf-48210307cfdc}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

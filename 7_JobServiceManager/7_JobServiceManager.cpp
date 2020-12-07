@@ -2,7 +2,7 @@
 //
 
 #include <iostream>
-#include "../../NativeDesLibrary/NativeDesDLL/NativeDes.h"
+#include "../Native-Des-Lib/NativeDesDLL/NativeDes.h"
 
 static void print_data(const char* tittle, unsigned char data[], int len)
 {
