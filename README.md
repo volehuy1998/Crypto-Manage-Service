@@ -1,5 +1,6 @@
 # Crypto Manage Service
 ## Nhóm 7: Xây dựng ứng dụng mã hóa sử dụng thư viện OpenSSL
+[Nhóm sẽ cập nhật tài liệu tham khảo liên tục](https://github.com/volehuy1998/Crypto-Document)</br>
 Gồm 4 thành viên:</br>
 &nbsp;&nbsp;&nbsp;&nbsp; + Võ Lê Huy</br>
 &nbsp;&nbsp;&nbsp;&nbsp; + Phan Hoàng Trung</br>
