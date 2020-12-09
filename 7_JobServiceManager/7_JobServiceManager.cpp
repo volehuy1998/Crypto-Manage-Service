@@ -17,29 +17,34 @@ static void print_data(const char* tittle, unsigned char data[], int len)
 
 int main()
 {
-        //DES_CBC();
-        //DES_ECB();
-        unsigned char input[] = "volehuy";
-        const char *key = "huy";
-        const char *key1 = "huy";
-        unsigned char output[sizeof input];
-        unsigned char output2[sizeof input];
-        des_ecb_with_str_key(input, key, output, 1);
-        des_ecb_with_str_key(output, key1, output2, 0);
-        print_data("Encrypted", output, sizeof input);
-        print_data("Decrypted", output2, sizeof input);
+    unsigned char input[] = "volehuy11";
+    const char *key = "huy";
+    const char *key1 = "huy";
+    int input_len = strlen((const char*)input);
+    bool is_require_padding = DES_KEY_SZ - (input_len % DES_KEY_SZ) >= 0 ? true : false;
+    int cipher_len = ((input_len / DES_KEY_SZ) + 1) * DES_KEY_SZ;
+    int decrypted_len = cipher_len;
+    unsigned char *cipher = (unsigned char*)calloc(cipher_len, 1);
+    unsigned char *decrypted = (unsigned char*)calloc(decrypted_len, 1);
 
-        memset(output, 0, sizeof input);
-        memset(output2, 0, sizeof input);
-        unsigned long long my_key = des_random_key();
-        des_ecb(input, my_key, output, 1);
-        my_key -= 1;
-        ++my_key;
-        des_ecb(output, my_key, output2, 0);
-        //des_ecb(input, sizeof input, my_key, output, 1);
-        //des_ecb(output, sizeof input, my_key, output2, 0);
-        print_data("Encrypted", output, sizeof input);
-        print_data("Decrypted", output2, sizeof input);
+    des_ecb_with_str_key(input, input_len, key, cipher, &cipher_len, 1);
+    des_ecb_with_str_key(cipher, cipher_len, key1, decrypted, &decrypted_len, 0);
+    print_data("Encrypted", cipher, cipher_len);
+    print_data("Decrypted", decrypted, decrypted_len);
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    //memset(cipher, 0, cipher_len);
+    //memset(decrypted, 0, decrypted_len);
+    //cipher_len = 0;
+    //decrypted_len = 0;
+    //unsigned long long my_key = des_random_key();
+    //des_ecb(input, input_len, my_key, cipher, &cipher_len, 1);
+    //des_ecb(cipher, cipher_len, my_key, decrypted, &decrypted_len, 0);
+    //decrypted[decrypted_len] = 0x0;
+    //print_data("Encrypted", cipher, cipher_len);
+    //print_data("Decrypted", decrypted, decrypted_len);
+
+    free(cipher);
+    free(decrypted);
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
